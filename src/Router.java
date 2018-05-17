@@ -35,10 +35,10 @@ public class Router {
 
 
     /**
-     * Each Router can do its THANG, which is
+     * Each Router can do its THING, which is
      * 1. send messages to its neighbors
      * 2. receive messages from its neighbors
      * 3. update its routing Table based on the messages
-     * 4. Check readme.md for more detailed explanation
+     * Check readme.md for more detailed explanation
      */
 }
