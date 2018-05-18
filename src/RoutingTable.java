@@ -16,6 +16,10 @@ public class RoutingTable {
         return routingRowList;
     }
 
-    //TODO provide a method to display Routing Table Information
+    public void printRoutingTable(){
+        for(RoutingRowInformation index: this.routingRowList){
+            System.out.println(index);
+        }
+    }
 
 }

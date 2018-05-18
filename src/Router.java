@@ -14,12 +14,13 @@ import java.util.List;
  * Every Router contains its own RoutingTable. so RoutingTable here will be considered as another instance variable
  */
 public class Router {
-
+    private String routerName;
     private List<Router> listOfNeighboringRouters;
     private List<RouterLink> listOfRouterLinks;
     private RoutingTable myRoutingTable;
 
-    public Router() {
+    public Router(String routerName) {
+        this.routerName = routerName;
         this.listOfNeighboringRouters = new ArrayList<>();
         this.listOfRouterLinks = new ArrayList<>();
         this.myRoutingTable = new RoutingTable();
@@ -31,6 +32,22 @@ public class Router {
 
     public void addToListOfRouterLinks(RouterLink newRouterLink) {
         this.listOfRouterLinks.add(newRouterLink);
+    }
+
+    public String getRouterName() {
+        return routerName;
+    }
+
+    public void setRouterName(String routerName) {
+        this.routerName = routerName;
+    }
+
+    public RoutingTable getMyRoutingTable() {
+        return myRoutingTable;
+    }
+
+    public void setMyRoutingTable(RoutingTable myRoutingTable) {
+        this.myRoutingTable = myRoutingTable;
     }
 
     /**

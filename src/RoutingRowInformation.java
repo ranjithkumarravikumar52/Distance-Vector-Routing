@@ -40,4 +40,13 @@ public class RoutingRowInformation {
     public void setNextHopToDestination(Router nextHopToDestination) {
         this.nextHopToDestination = nextHopToDestination;
     }
+
+    @Override
+    public String toString() {
+        return "RoutingRowInformation{" +
+                "destinationRouter=" + destinationRouter +
+                ", costToDestination=" + costToDestination +
+                ", nextHopToDestination=" + nextHopToDestination +
+                '}';
+    }
 }
