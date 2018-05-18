@@ -2,7 +2,8 @@
  * Name: Ranjith Kumar Ravikumar
  */
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class App {
 
@@ -15,23 +16,8 @@ public class App {
     static float[] temp;
 
     public static void main(String[] args) {
-
-        // ask user for the size of nodes in N
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Input the total number of routers in the network N: ");
-        try {
-            sizeOfNetwork = Integer.parseInt(br.readLine());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        //creating the routing table
-        routingTable = new float[sizeOfNetwork][sizeOfNetwork];
-
-        //initializing infinity to all values in the table
+        BufferedReader br = readNumberOfNodes();
         initializeRoutingTable();
-
-        //asking user to input values into the matrix
         readUserInput(br);
 
         //create vector matrix
@@ -39,12 +25,11 @@ public class App {
 
         printRoutingTable();
 
-        //update algorithm
-        //assuming the convergence reaches in sizeOfNetwork*sizeOfNetwork
+        //update algorithm: assuming the convergence reaches in sizeOfNetwork*sizeOfNetwork
         message_passing();
-        System.out.println();
+
         System.out.println("***********Convergence Reached in the Network***********");
-        System.out.println();
+
 
         //Link cost Change Implementation
         try {
@@ -74,10 +59,24 @@ public class App {
             if (change_row == -1) {
                 System.out.println("***********Convergence Reached in the Network (No link cost in the Network)***********");
             }
-        } catch (Exception E) {
-
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
+    }
+
+    private static BufferedReader readNumberOfNodes() {
+        // ask user for the size of nodes in N
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Input the total number of routers in the network N: ");
+        try {
+            sizeOfNetwork = Integer.parseInt(br.readLine());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        routingTable = new float[sizeOfNetwork][sizeOfNetwork];
+        return br;
     }
 
     private static void printRoutingTable() {
@@ -103,7 +102,7 @@ public class App {
 
                 }
             }
-        } catch (Exception e ){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -122,7 +121,7 @@ public class App {
         //finding cost cost<- row2th value in row1
         //going to row2th element in row1
         cost = routingTable[sending_row1 - 1][receiving_row2 - 1];
-        System.out.println("Distance from sending router to receiving roouter " + cost);
+        System.out.println("Distance from sending router to receiving router " + cost);
 
         //adding cost to the sending_row2 vector and assign to temp vector
         //creating temp vector send_vector and receiving vector
