@@ -44,7 +44,7 @@
 * Fully distributed algorithm
 
 ### Bellman-Ford's Algorithm code
-* Java code for Bellman-Ford's Algorithm has already been implemented in my other [repo](https://github.com/ranjithkumarravikumar52/Shortest-path-algorithms)
+* [Java code for Bellman-Ford's Algorithm](https://github.com/ranjithkumarravikumar52/Shortest-path-algorithms/blob/master/Dijkstra's%20Algo/src/bellmanford/Graph.java) has already been implemented in my other [repo](https://github.com/ranjithkumarravikumar52/Shortest-path-algorithms)
 * Once the code for that is fully understood, next task is to implement routing table for each node
 
 ### [Special Cases/Issues](https://www.youtube.com/watch?v=wDV0Nhs3_hE)
@@ -64,3 +64,5 @@
 * [In-detail explanation on RIP](https://www.youtube.com/watch?v=-AyHRhaw4Ao)
 * [What are the special cases in RIP ?](https://www.youtube.com/watch?v=wDV0Nhs3_hE)
 * [Working wiki example](https://en.wikipedia.org/wiki/Distance-vector_routing_protocol)
+* [Another working example](https://www.youtube.com/watch?v=00AAnwgl2DI)
+* [Simple Explanation on Poison-Reverse](https://www.youtube.com/watch?v=_lAJyA70Z-o)

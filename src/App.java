@@ -21,50 +21,23 @@ public class App {
         System.out.println("Input the total number of routers in the network N: ");
         try {
             sizeOfNetwork = Integer.parseInt(br.readLine());
-        } catch (Exception E) {
-
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         //creating the routing table
         routingTable = new float[sizeOfNetwork][sizeOfNetwork];
 
         //initializing infinity to all values in the table
-        for (int i = 0; i < sizeOfNetwork; i++) {
-            for (int j = 0; j < sizeOfNetwork; j++) {
-                routingTable[i][j] = infinity;
-            }
-        }
+        initializeRoutingTable();
 
         //asking user to input values into the matrix
-        try {
-            System.out.println("---------Input the initial values into the routing table: Input -1 for whose costs are not known--------");
-            for (int i = 0; i < sizeOfNetwork; i++) {
-                for (int j = 0; j < sizeOfNetwork; j++) {
-                    System.out.println("Enter value for " + i + " row " + " column " + j);
-                    float temp = Float.parseFloat(br.readLine());
-                    if (temp != -1) {
-                        routingTable[i][j] = temp;
-                    }
-
-                }
-            }
-        } catch (Exception E) {
-
-        }
+        readUserInput(br);
 
         //create vector matrix
         vector = new float[sizeOfNetwork];
 
-        //debugging
-        //System.out.println("The size of nodes in N: "+sizeOfNetwork);
-        System.out.println();
-        System.out.println("-------------The values in the routingTable are------------- ");
-        for (int i = 0; i < sizeOfNetwork; i++) {
-            for (int j = 0; j < sizeOfNetwork; j++) {
-                System.out.print(" " + routingTable[i][j]);
-            }
-            System.out.println();
-        }
+        printRoutingTable();
 
         //update algorithm
         //assuming the convergence reaches in sizeOfNetwork*sizeOfNetwork
@@ -105,6 +78,42 @@ public class App {
 
         }
 
+    }
+
+    private static void printRoutingTable() {
+        System.out.println("-------------The values in the routingTable are------------- ");
+        for (int i = 0; i < sizeOfNetwork; i++) {
+            for (int j = 0; j < sizeOfNetwork; j++) {
+                System.out.print(" " + routingTable[i][j]);
+            }
+            System.out.println();
+        }
+    }
+
+    private static void readUserInput(BufferedReader br) {
+        try {
+            System.out.println("---------Input the initial values into the routing table: Input -1 for whose costs are not known--------");
+            for (int i = 0; i < sizeOfNetwork; i++) {
+                for (int j = 0; j < sizeOfNetwork; j++) {
+                    System.out.println("Enter value for " + i + " row " + " column " + j);
+                    float temp = Float.parseFloat(br.readLine());
+                    if (temp != -1) {
+                        routingTable[i][j] = temp;
+                    }
+
+                }
+            }
+        } catch (Exception e ){
+            e.printStackTrace();
+        }
+    }
+
+    private static void initializeRoutingTable() {
+        for (int i = 0; i < sizeOfNetwork; i++) {
+            for (int j = 0; j < sizeOfNetwork; j++) {
+                routingTable[i][j] = infinity;
+            }
+        }
     }
 
     public static void updateAlgo(int sending_row1, int receiving_row2) {
@@ -149,28 +158,6 @@ public class App {
         for (int i = 0; i < sizeOfNetwork; i++) {
             routingTable[receiving_row2 - 1][i] = receiving_vector[i];
         }
-
-        //Debugging
-        /*System.out.println("The values inside send_vector: ");
-		for(int i=0;i<sizeOfNetwork;i++){
-			System.out.print(" "+send_vector[i]);
-		}
-		System.out.println();
-		System.out.println("The values inside receiving_vector ");
-		for(int i=0;i<sizeOfNetwork;i++){
-			System.out.print(" "+receiving_vector[i]);
-		}
-		System.out.println();
-		System.out.println("The values inside the temp_vector ");
-		for(int i=0;i<sizeOfNetwork;i++){
-			System.out.print(" "+temp[i]);
-		}
-		System.out.println();
-		System.out.println("-----Value of receiving vector after finding min------- ");
-		for(int i=0;i<sizeOfNetwork;i++){
-			System.out.print(" "+receiving_vector[i]);
-		}
-		System.out.println();*/
         System.out.println("-------------The values in the routingTable after message passing is------------- ");
         for (int i = 0; i < sizeOfNetwork; i++) {
             for (int j = 0; j < sizeOfNetwork; j++) {
@@ -183,7 +170,6 @@ public class App {
 
     public static void message_passing() {
         for (int i = 0; i < sizeOfNetwork * sizeOfNetwork; i++) {
-            //System.out.println("Inside the run loop: "+i);
             try {
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
                 System.out.println();
@@ -194,8 +180,8 @@ public class App {
                 receiving_row2 = Integer.parseInt(br.readLine());
                 updateAlgo(sending_row1, receiving_row2);
 
-            } catch (Exception E) {
-
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
 

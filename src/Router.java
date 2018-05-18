@@ -33,6 +33,19 @@ public class Router {
         this.listOfRouterLinks.add(newRouterLink);
     }
 
+    /**
+     * PROTOCOL FRAMEWORK
+     * Initial State at a node: Cost (distance) to its neighbors is known
+     * Final State at a node: Cost to all its nodes is known and also the next hop
+     */
+    //TODO Initialization phase for Routers
+
+    //TODO sendMessageToNeighbors
+
+    //TODO receiveMessageFromNeighbors
+
+    //TODO updateRoutingTable
+
 
     /**
      * Each Router can do its THING, which is
@@ -41,5 +54,6 @@ public class Router {
      * 3. update its routing Table based on the messages
      * Check readme.md for more detailed explanation
      */
+
 }
 
